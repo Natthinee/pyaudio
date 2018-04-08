@@ -1,0 +1,40 @@
+p = pyaudio.PyAudio()
+
+stream = p.open(
+    format = FORMAT,
+    channels = CHANNELS,
+    rate = RATE,
+    input = True,
+    output = True,
+    frames_per_buffer = CHUNK
+)
+
+data = stream.read(CHUNK)
+#len(data)
+data_int = np.array(struct.unpack(str(2 * CHUNK) + 'B', data),dtype = 'b')[::2] + 127
+#data_int
+
+fig, ax = plt.subplots()
+
+ax.plot(data_int, '-')
+plt.show()
+p = pyaudio.PyAudio()
+
+stream = p.open(
+    format = FORMAT,
+    channels = CHANNELS,
+    rate = RATE,
+    input = True,
+    output = True,
+    frames_per_buffer = CHUNK
+)
+
+data = stream.read(CHUNK)
+#len(data)
+data_int = np.array(struct.unpack(str(2 * CHUNK) + 'B', data),dtype = 'b')[::2] + 127
+#data_int
+
+fig, ax = plt.subplots()
+
+ax.plot(data_int, '-')
+plt.show()
